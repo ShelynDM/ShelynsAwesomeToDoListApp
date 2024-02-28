@@ -8,10 +8,20 @@ import {
   Text,
 } from 'react-native';
 
-function ToDoList(props) {
+function ToDoList({tasks}) {
   return (
     <>
       <ScrollView>
+        {tasks.map((task, index) => (
+          <Pressable key={index}>
+            <View style={[styles.task, styles.completed]}>
+              <Text style={styles.taskText}>{task}</Text>
+              <Text style={styles.taskText}>Hello!!!</Text>
+            </View>
+          </Pressable>
+        ))}
+      </ScrollView>
+      {/* <ScrollView>
         <Pressable>
           <View style={[styles.task, styles.completed]}>
             <Text style={styles.taskText}>Do laundry</Text>
@@ -27,7 +37,7 @@ function ToDoList(props) {
             <Text style={styles.taskText}>Walk dog</Text>
           </View>
         </Pressable>
-      </ScrollView>
+      </ScrollView> */}
     </>
   );
 }
