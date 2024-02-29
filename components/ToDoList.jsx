@@ -11,16 +11,17 @@ import {
 function ToDoList({tasks}) {
   return (
     <>
-      <ScrollView>
-        {tasks.map((task, index) => (
-          <Pressable key={index}>
-            <View style={[styles.task, styles.completed]}>
-              <Text style={styles.taskText}>{task}</Text>
-              <Text style={styles.taskText}>Hello!!!</Text>
-            </View>
-          </Pressable>
-        ))}
-      </ScrollView>
+      <SafeAreaView>
+        <ScrollView>
+          {tasks.map((task, index) => (
+            <Pressable key={index}>
+              <View style={[styles.task, styles.completed]}>
+                <Text style={styles.taskText}>{task}</Text>
+              </View>
+            </Pressable>
+          ))}
+        </ScrollView>
+      </SafeAreaView>
       {/* <ScrollView>
         <Pressable>
           <View style={[styles.task, styles.completed]}>
