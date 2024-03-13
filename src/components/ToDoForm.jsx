@@ -8,7 +8,7 @@ import {
   Text,
 } from 'react-native';
 
-function ToDoForm({addTask}) {
+export default function ToDoForm({addTask}) {
   const [taskText, setTaskText] = React.useState('');
   return (
     <>
@@ -54,5 +54,3 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
 });
-
-export default ToDoForm;

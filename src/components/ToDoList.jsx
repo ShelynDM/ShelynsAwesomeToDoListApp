@@ -8,7 +8,7 @@ import {
   Text,
 } from 'react-native';
 
-function ToDoList({tasks}) {
+export default function ToDoList({tasks}) {
   return (
     <>
       <SafeAreaView>
@@ -56,5 +56,3 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
-
-export default ToDoList;
