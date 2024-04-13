@@ -10,24 +10,51 @@ import {
 
 export default function ToDoForm({addTask}) {
   const [taskText, setTaskText] = React.useState('');
+  const [tasks, setTasks] = React.useState([]);
+
+  React.useEffect(() => {
+    const taskData = require('../data/task.json');
+    setTasks(taskData);
+  }, []);
+
+  const handleAddRandomTask = () => {
+    // get the random task from the tasks array
+    const taskData = require('../data/task.json');
+    const randomIndex = Math.floor(Math.random() * taskData.tasks.length);
+    const randomTask = taskData.tasks[randomIndex];
+
+    // change the value of the input field to the random task
+    setTaskText(randomTask);
+  };
+
   return (
     <>
       <View style={styles.form}>
-        <TextInput
-          style={styles.input}
-          placeholder="Add a new task..."
-          onChangeText={text => setTaskText(text)}
-          value={taskText}
-        />
-        <Pressable>
-          <Button
-            title="Add Task"
-            onPress={() => {
-              addTask(taskText);
-              setTaskText('');
-            }}
+        <View>
+          <TextInput
+            style={styles.input}
+            placeholder="Add a new task..."
+            onChangeText={text => setTaskText(text)}
+            value={taskText}
           />
-        </Pressable>
+        </View>
+        <View style={{flex: 1, flexDirection: 'column'}}>
+          <Pressable>
+            <Button
+              title="Add Task"
+              onPress={() => {
+                addTask(taskText);
+                setTaskText('');
+              }}
+            />
+          </Pressable>
+          <Pressable>
+            <Button
+              title="Generate Random Task"
+              onPress={handleAddRandomTask}
+            />
+          </Pressable>
+        </View>
       </View>
     </>
   );
